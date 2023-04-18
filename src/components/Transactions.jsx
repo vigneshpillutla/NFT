@@ -1,24 +1,25 @@
-import { useEffect, useState } from 'react'
-import { BiTransfer } from 'react-icons/bi'
-import { MdOpenInNew } from 'react-icons/md'
-import { useGlobalState, truncate } from '../store'
+import { useEffect, useState } from 'react';
+import { BiTransfer } from 'react-icons/bi';
+import { MdOpenInNew } from 'react-icons/md';
+import { useGlobalState, truncate } from '../store';
 
 const Transactions = () => {
-  const [transactions] = useGlobalState('transactions')
-  const [end, setEnd] = useState(3)
-  const [count] = useState(3)
-  const [collection, setCollection] = useState([])
+  const [transactions] = useGlobalState('transactions');
+  const [end, setEnd] = useState(3);
+  const [count] = useState(3);
+  const [collection, setCollection] = useState([]);
 
   const getCollection = () => {
-    return transactions.slice(0, end)
-  }
+    return transactions.slice(0, end);
+  };
 
   useEffect(() => {
-    setCollection(getCollection())
-  }, [transactions, end])
+    setCollection(getCollection());
+  }, [transactions, end]);
 
   return (
-    <div className="bg-[#151c25]">
+    // <div className="bg-[#151c25]">
+    <div>
       <div className="w-4/5 py-10 mx-auto">
         <h4 className="text-white text-3xl font-bold uppercase text-gradient">
           {collection.length > 0 ? 'Latest Transactions' : 'No Transaction Yet'}
@@ -57,7 +58,7 @@ const Transactions = () => {
             <button
               className="shadow-xl shadow-black text-white
             bg-[#e32970] hover:bg-[#bd255f]
-            rounded-full cursor-pointer p-2"
+            rounded cursor-pointer p-2"
               onClick={() => setEnd(end + count)}
             >
               Load More
@@ -66,7 +67,7 @@ const Transactions = () => {
         ) : null}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Transactions
+export default Transactions;
